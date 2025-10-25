@@ -1,5 +1,12 @@
 import React from "react";
-import { Typography, Card, CardContent, CardMedia, Divider, Box } from "@mui/material";
+import {
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
+  Divider,
+  Box,
+} from "@mui/material";
 import { useParams, Link } from "react-router-dom";
 import models from "../../modelData/models";
 import "./styles.css";
@@ -9,17 +16,18 @@ function UserPhotos() {
   const photos = models.photoOfUserModel(userId);
 
   if (!photos || photos.length === 0) {
-    return <Typography variant="body1">No photos found for this user.</Typography>;
+    return (
+      <Typography variant="body1">No photos found for this user.</Typography>
+    );
   }
 
   return (
     <div className="user-photos-container">
       {photos.map((photo) => (
         <Card key={photo._id} sx={{ mb: 3, p: 2 }}>
-
           <CardMedia
             component="img"
-            image={require(`../../images/${photo.file_name}`)}
+            image={`/images/${photo.file_name}`}
             alt="User photo"
             sx={{
               width: "100%",
@@ -29,7 +37,6 @@ function UserPhotos() {
             }}
           />
           <CardContent>
-
             <Typography variant="body2" color="textSecondary">
               Uploaded: {new Date(photo.date_time).toLocaleString()}
             </Typography>
