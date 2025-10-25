@@ -16,10 +16,10 @@ function UserPhotos() {
     <div className="user-photos-container">
       {photos.map((photo) => (
         <Card key={photo._id} sx={{ mb: 3, p: 2 }}>
-          {/* Ảnh */}
+
           <CardMedia
             component="img"
-            image={`images/${photo.file_name}`}
+            image={require(`../../images/${photo.file_name}`)}
             alt="User photo"
             sx={{
               width: "100%",
@@ -29,12 +29,11 @@ function UserPhotos() {
             }}
           />
           <CardContent>
-            {/* Thời gian tạo ảnh */}
+
             <Typography variant="body2" color="textSecondary">
               Uploaded: {new Date(photo.date_time).toLocaleString()}
             </Typography>
 
-            {/* Comment */}
             {photo.comments && photo.comments.length > 0 && (
               <Box sx={{ mt: 2 }}>
                 <Divider sx={{ mb: 1 }} />
